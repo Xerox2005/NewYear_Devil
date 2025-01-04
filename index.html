@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devil's Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #ff0000;
+            font-family: 'Creepster', cursive, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff3333, 0 0 30px #ff6666;
+            animation: glow 1.5s infinite alternate;
+            margin: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px;
+        }
+
+        button {
+            background-color: #ff3333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #ff3333;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #ff6666;
+            transform: scale(1.1);
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff3333, 0 0 30px #ff6666;
+            }
+            to {
+                text-shadow: 0 0 20px #ff3333, 0 0 30px #ff6666, 0 0 40px #ff9999;
+            }
+        }
+
+        .flames {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: url('https://www.transparenttextures.com/patterns/fire.jpg');
+            background-size: cover;
+            animation: flames 1.5s infinite alternate;
+        }
+
+        @keyframes flames {
+            from {
+                filter: brightness(1);
+            }
+            to {
+                filter: brightness(1.5);
+            }
+        }
+
+        .ghost {
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            width: 100px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50% 50% 0 0;
+            animation: float 6s infinite linear;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .ghost::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+        }
+
+        .ghost .eyes {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            width: 60%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .ghost .eye {
+            width: 15px;
+            height: 15px;
+            background: black;
+            border-radius: 50%;
+        }
+
+        .ghost .mouth {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            width: 30px;
+            height: 10px;
+            background: black;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(-20px) translateX(0);
+            }
+            50% {
+                transform: translateY(20px) translateX(110%);
+            }
+            to {
+                transform: translateY(-20px) translateX(0);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Welcome to 2025! Thinking to start new this year? Haha! I, bad luck, won’t leave you.</h1>
+    <p>Well, I am not that bad too. So I give a chance for you to escape from me. Share this to at least 5 members to escape from me.</p>
+    <button onclick="copyLink()">Copy Link</button>
+    <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+
+    <div class="flames"></div>
+    <div class="ghost">
+        <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+        <div class="mouth"></div>
+    </div>
+
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle"
+         style="display:block; margin: 20px auto;"
+         data-ad-client="ca-pub-XXXXXX"
+         data-ad-slot="XXXXXX"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script>
+        function copyLink() {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Link copied to clipboard! Share it with your friends.');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function shareOnWhatsApp() {
+            const message = `Welcome to 2025! Thinking to start new this year? Haha! I, bad luck, won’t leave you. Well, I am not that bad too. So I give a chance for you to escape from me. Share this to at least 5 members to escape from me. ${window.location.href}`;
+            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
